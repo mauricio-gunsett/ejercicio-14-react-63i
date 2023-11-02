@@ -18,7 +18,7 @@ const Router = () => {
   return <BrowserRouter>
   {/* <BrowserRouter/> → Conecta nuestra aplicación a la URL del navegador, */}
   <Navbar />
-  <main>
+  <main className='container py-5'>
   <Routes>
     {/* Routes funciona como un swich va a decidir en que ruta estamos parados */}
     <Route path='/' element ={<HomeView/>} />
