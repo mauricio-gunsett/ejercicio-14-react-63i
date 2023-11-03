@@ -12,6 +12,7 @@ const AdminTable = (props) => {
           <th>#</th>
           <th>Título</th>
           <th>Imagen</th>
+          <th>Descripción</th>
           <th>Acciones</th>
         </tr>
       </thead>
