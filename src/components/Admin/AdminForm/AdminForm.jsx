@@ -17,9 +17,8 @@ const AdminForm = (props) => {
     formState: { errors },
     reset,
   } = useForm();
-  const handleSubmit = (data) => {
-    console.log(data);
 
+  const handleSubmit = (data) => {
     const newBlog = {...data, id: generateId()};
     setBlogs((prev)=>[...prev, newBlog])
 
