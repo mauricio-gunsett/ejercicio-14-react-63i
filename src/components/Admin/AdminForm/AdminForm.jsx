@@ -8,7 +8,7 @@ import { postBlogFn, putBlogFn } from "../../../api/blogs";
 
 import { useBlog } from "../../../stores/useBlogs";
 
-import Input from "../../input/input";
+import Input from "../../Input/input";
 import Textarea from "../../Textarea/Textarea";
 
 

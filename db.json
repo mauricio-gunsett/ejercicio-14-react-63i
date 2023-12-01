@@ -45,6 +45,14 @@
       "password": "Aa12345678",
       "isAdmin": false,
       "id": 4
+    },
+    {
+      "firstname": "Mauricio",
+      "lastname": "Gunsett",
+      "username": "mau",
+      "password": "aA1*bbbb",
+      "isAdmin": false,
+      "id": 5
     }
   ]
 }

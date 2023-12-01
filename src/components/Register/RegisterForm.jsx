@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { postUserFn } from "../../api/users";
 import { useSession } from "../../stores/useSession";
 
-import Input from "../input/Input";
+import Input from "../Input/input";
 
 
 

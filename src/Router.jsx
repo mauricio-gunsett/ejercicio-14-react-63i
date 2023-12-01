@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { useSession } from "./stores/useSession";
 
-import AdminViews from "./views/adminViews";
+
 import DetailViews from "./views/DetailViews";
 import ErrorViews from "./views/ErrorViews";
 import HomeView from "./views/HomeView";
@@ -11,6 +11,7 @@ import RegisterView from "./views/RegisterView";
 
 import Footer from "./components/Common/Footer";
 import Navbar from "./components/Common/Navbar";
+import AdminViews from "./views/AdminViews";
 
 
 const Router = () => {
