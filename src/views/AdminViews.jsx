@@ -1,23 +1,39 @@
-import {useEffect, useState } from "react"
-
-import AdminForm from "../components/Admin/AdminForm/AdminForm"
-import AdminTable from "../components/Admin/AdminTable/AdminTable"
-
-const blogsLS = JSON.parse(localStorage.getItem("blogs")) || [];
+import { useQuery } from "@tanstack/react-query";
+import AdminForm from "../components/Admin/AdminForm/AdminForm";
+import AdminTable from "../components/Admin/AdminTable/AdminTable";
+import { getBlogsFn } from "../api/blogs";
 
 const AdminViews = () => {
-  const [blogs,setBlogs] = useState(blogsLS);
+  const {
+    data: blogs,
+    isError,
+    isLoading,
+  } = useQuery({ queryKey: ["blogs"], queryFn: getBlogsFn });
 
-  useEffect(()=>{
-    localStorage.setItem("blogs", JSON.stringify(blogs))
-  },[blogs]);
+  // caso de error
+  if (isError) {
+    return (
+      <>
+        <h1>Panel de administracion</h1>
+        <AdminForm />
+        <div className="alert alert-danger mt-3">
+          Ocurrio un error cargando los blogs
+        </div>
+      </>
+    );
+  }
+
+  // return optimista
   return (
     <>
-    <h1>Panel de administracion</h1>
-    <hr />
-    <AdminForm setBlogs={setBlogs}/>
-    <AdminTable blogs={blogs} setBlogs={setBlogs}/>
+      <h1>Panel de administracion</h1>
+      <hr />
+      <AdminForm />
+      {isLoading ? (
+        <h3 className="mt-3 text-center">Cargando... </h3>
+      ) : (<AdminTable blogs={blogs} />
+      )}
     </>
-  )
-}
-export default AdminViews
+  );
+};
+export default AdminViews;

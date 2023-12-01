@@ -1,4 +1,4 @@
-const Input = (props) => {
+ export const Input = (props) => {
   const {
     placeholder,
     label,
