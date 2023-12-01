@@ -1,48 +1,40 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import { useSession } from "./stores/useSession";
+import { useSession } from './stores/useSession';
 
+import AdminView from './views/AdminView';
+import DetailView from './views/DetailView';
+import ErrorView from './views/ErrorView';
+import HomeView from './views/HomeView';
+import LoginView from './views/LoginView';
+import RegisterView from './views/RegisterView';
 
-import DetailViews from "./views/DetailViews";
-import ErrorViews from "./views/ErrorViews";
-import HomeView from "./views/HomeView";
-import LoginViews from "./views/LoginViews";
-import RegisterView from "./views/RegisterView";
-
-import Footer from "./components/Common/Footer";
-import Navbar from "./components/Common/Navbar";
-import AdminViews from "./views/AdminViews";
-
+import Footer from './components/Common/Footer';
+import Navbar from './components/Common/Navbar';
 
 const Router = () => {
   const { user, isLoggedIn } = useSession();
 
   return (
     <BrowserRouter>
-      {/* <BrowserRouter/> → Conecta nuestra aplicación a la URL del navegador, */}
       <Navbar />
-      <main className="container py-5">
+      <main className='container py-5'>
         <Routes>
-          {/* Routes funciona como un swich va a decidir en que ruta estamos parados */}
-          <Route path="/" element={<HomeView />} />
-          {/* Route: hace alucion a una ruta en particular.
-     path: el destino de la ruta en este caso / que es el home.
-     element: poner el componente que realmente va hacer eso.
-     */}
-          <Route path="/detail/:id" element={<DetailViews />} />
+          <Route path='/' element={<HomeView />} />
+          <Route path='/detail/:id' element={<DetailView />} />
           <Route
-            path="/login"
-            element={isLoggedIn ? <Navigate to="/" /> : <LoginViews />}
+            path='/login'
+            element={isLoggedIn ? <Navigate to='/' /> : <LoginView />}
           />
           <Route
-            path="/register"
-            element={isLoggedIn ? <Navigate to="/" /> : <RegisterView />}
+            path='/register'
+            element={isLoggedIn ? <Navigate to='/' /> : <RegisterView />}
           />
           <Route
-            path="/admin"
-            element={user?.isAdmin ? <AdminViews /> : <Navigate to="/" />}
+            path='/admin'
+            element={user?.isAdmin ? <AdminView /> : <Navigate to='/' />}
           />
-          <Route path="*" element={<ErrorViews />} />
+          <Route path='*' element={<ErrorView />} />
         </Routes>
       </main>
       <Footer />
